@@ -11,6 +11,7 @@ export default function Home() {
   const userRef = useRef(null)
   const [userName, setUserName] = useState('')
   const [data, setData] = useState('')
+  const [repo, setRepo] = useState([])
   const [isLoading, setLoading] = useState(false)
 
   function handleClick() {
@@ -33,8 +34,7 @@ export default function Home() {
       fetch(APIREPO)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
-        // setData(data)
+        setRepo(data)
         setLoading(false)
       })
   }, [userName]);
@@ -57,7 +57,7 @@ export default function Home() {
         handleClick={handleClick}
         userRef={userRef}
       />
-      <GithubUser data={data} />
+      <GithubUser data={data} repo={repo} />
       </>
       }
     </div>
