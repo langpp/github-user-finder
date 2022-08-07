@@ -1,12 +1,13 @@
 import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
-import { ThemeProvider } from 'next-themes'
+import { wrapper, store } from "../store/store";
+import { Provider } from "react-redux";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider attribute="class">
+    <Provider attribute="class" store={store}>
       <Component {...pageProps} />
-    </ThemeProvider>
+    </Provider>
   )
 }
 
